@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_LV_Btn.Views.HomePage">
+    <StackLayout
+        Padding="0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        BackgroundColor="#ffffff"
+        Spacing="0">
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <OnPlatform.iOS>
+                    0, 30, 0, 0
+                </OnPlatform.iOS>
+                <OnPlatform.Android>
+                    0, 20, 0, 0
+                </OnPlatform.Android>
+            </OnPlatform>
+        </StackLayout.Padding>
+        <ListView x:Name="FriendLV"
+                              ItemsSource="{Binding FriendList}"
+                              HasUnevenRows="True"
+                              SeparatorColor="#2196F3"
+                              SeparatorVisibility="None"
+                              VerticalOptions="FillAndExpand"
+                              BackgroundColor="#ffffff">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                                Padding="5"
+                                Spacing="5"
+                                VerticalOptions="FillAndExpand"
+                                Orientation="Vertical">
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Padding="10,0, 0, 0">
+                                <Label
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    FontSize="Small"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                            <StackLayout
+                                VerticalOptions="Center"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Padding="0,0,10,0"
+                                Spacing="2">
+                                <Button
+                                    x:Name="btnAccept"
+                                    Text="Accept"
+                                    FontSize="Small"
+                                    TextColor="Black"
+                                    BorderColor="Transparent"
+                                    BorderWidth="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="FillAndExpand"
+                                    Clicked="btnAccept_Clicked"
+                                    CommandParameter="{Binding .}"/>
+                                <Button
+                                    x:Name="btnDeny"
+                                    Text="Deny"
+                                    FontSize="Small"
+                                    TextColor="Black"
+                                    BorderColor="Transparent"
+                                    BorderWidth="2"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="FillAndExpand"
+                                    Clicked="btnDeny_Clicked"
+                                    CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                            <StackLayout
+                                    Orientation="Vertical"
+                                    Padding="5,0,5,0">
+                                <BoxView
+                                    BackgroundColor="#2196F3"
+                                    HeightRequest="1"></BoxView>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
